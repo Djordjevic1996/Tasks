@@ -1,0 +1,36 @@
+- name: Mypass
+  hosts: localhost
+  become: false
+  gather_facts: false
+
+
+
+  vars_prompt:
+    - name: username
+      prompt: enter your username
+      private: false
+
+
+
+    - name: password
+      prompt: enter your password
+      private: true
+
+  tasks :
+
+    - name: display user name
+      debug:
+        msg: the username is {{ username }} and your password is {{ password|password_hash('sha512') }}
+
+    - name: pause execution for user confirmation
+      pause:
+        prompt: Do you want to diaplay password on screen ( yes/no or y/n)
+      register: user_response
+
+    - debug:
+        msg: user has entered {{ user_response.user_input }}
+
+    - name: display user password
+      debug:
+        msg: your password is {{ password }}
+      when: user_response.user_input == 'y' or user_response.user_input == 'yes'

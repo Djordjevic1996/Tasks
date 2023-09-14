@@ -1,0 +1,55 @@
+---
+- hosts: localhost
+  gather_facts: true 
+#  become: true     
+
+  tasks:
+
+    
+
+  - name: Ansible Workers details
+    debug:
+     msg: "A list of workers details:\n name {{ item.name }}, \n works day {{ item.work }}, hours to work: {{ item.hours }} city :{{ item.city }} gender: {{item.gender}} age:{{ item.age }}"
+    loop: 
+      - name: Dragan
+        gender: male
+        age: 27
+        city: Deva
+        work: Monday to Friday
+        hours: 9-17
+
+      - name: Alin
+        gender: male
+        age: 38
+        city: Bucuresti
+        work: Monday to Friday
+        hours: 9-17
+
+      - name: Peter
+        gender: male
+        age: 25
+        city: Cluj
+        work: Monday to Friday
+        hours: 9-17
+
+      - name: Alexandra
+        gender: female
+        age: 35
+        city: Timisoara
+        work: Monday to Friday
+        hours: 9-17
+
+      - name: Claudia
+        gender: female
+        age: 43
+        city: Oradea
+        work: Monday to Friday
+        hours: 9-17
+
+      - name: Iulian
+        gender: male
+        age: 39
+        city: Suceava
+        work: Saturday to Sunday
+        hours: 9-17
+     

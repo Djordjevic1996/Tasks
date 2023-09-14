@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars: 
+    x: 45
+    my_name: "Dragan"
+  vars_prompt:
+     - name: y
+       prompt: Enter the value for y
+       private: false
+
+     -  name: w
+        prompt: Enter the value for w
+        private: false
+  
+  tasks:
+     -  debug:
+          msg: 
+            - "The value for x: {{x}}"
+            - "The my name is {{my_name}}"
+            - "The value of y: {{y}}"
+            - "The value of w: {{w}}"
+             
+     - name: adunare
+       debug:
+         msg: "Suma celor 2 numere : {{y}}  si  {{w}} este {{sum}}"
+        

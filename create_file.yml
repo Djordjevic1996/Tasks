@@ -1,0 +1,32 @@
+---
+
+- hosts: localhost   
+  gather_facts: false
+
+  vars_prompt:
+
+
+  tasks:
+  - name: username
+    pause:
+      prompt: enter your username
+    register: username_respone 
+    
+  - name: Ansible file module create directory    
+    file:
+      path: "{{ username_response.user_input }}"
+      state: directory
+
+  - name: "create a file on test directory"
+    file:
+      path: file.txt
+      state: touch
+
+
+      
+
+ # - name: write to file
+  #  ansible.builtin.copy:
+  #    content: "{{ fruit  }}"
+   #   dest: "{{ /mnt/c/Users/a830014/.git/pytho - C:\Users\a830014\.git\python\prompt.txt }}"
+

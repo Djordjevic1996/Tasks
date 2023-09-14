@@ -1,0 +1,10 @@
+- hosts: localhost
+  tasks:
+   - name: test loop
+     debug:
+       msg: The name is  "{{ item }}"
+     loop:
+       - Ram
+       - Ramesh
+       - Mohan
+
